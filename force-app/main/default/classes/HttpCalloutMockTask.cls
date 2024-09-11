@@ -1,5 +1,6 @@
 @isTest
 global class HttpCalloutMockTask implements HttpCalloutMock{
+    //Mock body
     global HttpResponse respond(HttpRequest request) {
         HttpResponse response = new HttpResponse();
         
