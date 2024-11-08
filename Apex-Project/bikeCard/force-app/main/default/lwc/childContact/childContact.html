@@ -1,0 +1,26 @@
+<!-- <template>
+    <lightning-card title="Selected Contacts List">
+       
+        <template if:true={selectedContact}>
+            <p>Name:{selectedContact.Name}</p>
+            <p>Email:{selectedContact.Email}</p>
+            <p>Phone:{selectedContact.Phone}</p>
+        </template>
+        <template if:false={selectedContact}>
+            <p>No contact selected.</p>
+        </template>
+    </lightning-card>
+</template> -->
+<template>
+    <lightning-card title="Selected Contact Details" icon-name="standard:contact" class="slds-m-around_medium">
+        <template if:true={contact}>
+            <p><strong>Name:</strong> {contact.Name}</p>
+            <p><strong>Email:</strong> {contact.Email}</p>
+            <p><strong>Phone:</strong> {contact.Phone}</p>
+        </template>
+        <template if:false={contact}>
+            <p>No contact selected.</p>
+        </template>
+    </lightning-card>
+</template>
+

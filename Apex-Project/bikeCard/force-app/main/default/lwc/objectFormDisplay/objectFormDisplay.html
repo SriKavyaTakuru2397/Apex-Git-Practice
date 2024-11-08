@@ -1,0 +1,23 @@
+<template>
+    <c-object-dropdown-selection-form onselected={handleParent}></c-object-dropdown-selection-form>
+
+    <template if:true={isAccount}>
+        <c-account-form></c-account-form>
+    </template>
+
+    <template if:true={isContact}>
+        <c-contact-form></c-contact-form>
+    </template>
+    <template if:true={isOpportunity}>
+        <c-opportunity-form></c-opportunity-form>
+    </template>
+
+
+
+
+
+
+    
+
+
+</template>

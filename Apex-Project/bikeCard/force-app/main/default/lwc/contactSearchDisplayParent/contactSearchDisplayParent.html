@@ -1,0 +1,22 @@
+<template>
+    <div class="slds-m-around_medium">
+        <lightning-card title="Search for Contacts You Want to Display on this Page">
+          
+           
+            <lightning-input label="Contact Name" 
+                             onchange={handleInputChange} 
+                             placeholder="Type the contact name here...">
+            </lightning-input>
+
+          
+            <lightning-button label="Select" onclick={handleSelectContact}></lightning-button>
+
+          
+            <template if:true={selectedContacts}>
+                <template for:each={selectedContacts} for:item="contact">
+                    <c-child-contact key={contact.Id} contact={contact}></c-child-contact>
+                </template>
+            </template>
+        </lightning-card>
+    </div>
+</template>

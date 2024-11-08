@@ -1,0 +1,51 @@
+<template>
+    <lightning-card>  
+        <!-- <template if:true={isLoading}>
+       
+        <lightning-spinner alternative-text="Loading" size="medium"></lightning-spinner>
+    </template> -->
+    
+            <template if:true={isMoreThanFiveRecords}>
+            <c-p-search-input onsearch={handleSearchTerm}></c-p-search-input>
+        </template>
+        <c-accounts-related-object-custom-data-table onparent={handleParent}></c-accounts-related-object-custom-data-table>
+ 
+    </lightning-card>
+
+    <lightning-card>
+        <template if:true={isRecordsExist}>
+            <table class="slds-table slds-table_bordered slds-table_cell-buffer slds-table_col-bordered">
+                <thead>
+                    <tr>
+                        <template for:each={columnData} for:item="col">
+                            <th key={col.Id}>{col.label}</th>
+                        </template>
+                    </tr>
+                </thead>
+                <tbody>
+                    <template for:each={displayedRowData} for:item="object">
+                        <tr key={object.Id}>
+                            <template for:each={object.record} for:item="values">
+                                <td key={values} class="slds-cell-edit">{values}</td>
+                            </template>
+                        </tr>
+                    </template>
+                </tbody>
+            </table> 
+            <template if:true={isMoreThanFiveRecords}>
+
+            <div class="pagination-controls slds-grid slds-grid_align-center slds-m-around_medium">
+                <lightning-button label="Previous" onclick={handlePreviousPage} disabled={isPreviousDisabled}></lightning-button>
+                <span class="slds-m-horizontal_medium">Page {pageNumber} of {totalPages}</span>
+                <lightning-button label="Next" onclick={handleNextPage} disabled={isNextDisabled}></lightning-button>
+            </div>
+            </template>
+        </template>
+        <template if:true={isObjectSelected}>
+        <template if:false={isRecordsExist}>
+            <p>No Related {selectedobj} Records of Account</p>
+        </template>
+    </template>
+    
+    </lightning-card>
+</template>

@@ -1,0 +1,19 @@
+<template>
+    <div>
+        <lightning-card title="Select an Object to display it's Corresponding Form">
+          <div class="slds-col slds-size_2-of-4 slds-m-around_small">
+          <lightning-combobox
+          name="objectType"
+          variant="brand"
+          value={value}
+          placeholder="Select an Object"
+          onchange={handleChange}
+          options={options}
+          >
+
+          </lightning-combobox>
+        </div>
+        </lightning-card>
+    </div>
+    
+</template>

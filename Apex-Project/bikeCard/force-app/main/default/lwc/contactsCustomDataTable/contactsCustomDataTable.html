@@ -1,0 +1,96 @@
+<template>
+    <div class="slds-box slds-theme_default">
+        <!-- <h1>Related Contacts for Account</h1> -->
+        <template if:true={paginatedContacts}>
+            <table class="slds-table slds-table_bordered slds-table_cell-buffer">
+                <thead>
+                   
+                     
+                            <template for:each={columnMetaData} for:item="column">
+                                <th key={column.colApiName}>{column.columnName}</th>
+                            </template>
+                            <!-- If you need a column for edit/delete actions -->
+                       
+                            
+                    
+                       
+                 
+                    
+                </thead>
+                <tbody>
+                    <!-- <template for:each={paginatedContacts} for:item="contact">
+                        <tr key={contact.Id}> -->
+                            <!-- <template if:true={contact.isEditing}>
+                                <td>
+                                    <a href="javascript:void(0)" onclick={handleLinkClick}>
+                                        <lightning-input type="text" data-contact-id={contact.Id} data-field="Name" editable
+                                            onchange={handleFieldChange} value={contact.Name} ></lightning-input>
+                                    </a>
+
+                                    
+                                </td>
+                                <td>
+                                    <input type="email" value={contact.Email} data-contact-id={contact.Id}
+                                        data-field="Email" onchange={handleFieldChange} />
+                                </td>
+                                <td>
+                                    <input type="phone" value={contact.Phone} data-contact-id={contact.Id}
+                                        data-field="Phone" onchange={handleFieldChange} />
+                                </td>
+                                <td>
+                                    <lightning-button label="Save" onclick={handleSave}
+                                        data-id={contact.Id}></lightning-button>
+                                    <lightning-button label="Cancel" onclick={handleCancel}
+                                        data-id={contact.Id}></lightning-button>
+                                </td>
+                            </template> -->
+                            <!-- <template if:false={contact.isEditing}> -->
+                                <!-- <td>
+                                    <a href="javascript:void(0)" onclick={handleLinkClick} data-contact-id={contact.Id}>
+                                        {contact.Name}</a>
+                                </td>
+                                <td>{contact.Email}</td>
+                                <td>{contact.Phone}</td> -->
+                              
+                              
+                                    <!-- <template for:each={structuredData} for:item="valueArray">
+                                        <tr key={valueArray.Id}>
+                                            <template for:each={valueArray.record} for:item="record">
+                                                <td key={valueArray.Id}>{record}</td>
+                                            </template>
+                                        </tr>
+                                    </template> -->
+                                    <template for:each={paginatedContacts} for:item="valueArray">
+                                        <tr key={valueArray.Id}>
+                                            <template for:each={valueArray.record} for:item="record">
+                                                <td key={valueArray.Id}>{record}</td>
+                                            </template>
+                                        </tr>
+                                    </template>
+                                   
+                                    <!-- <lightning-button icon-name="utility:edit" alternative-text="Edit"
+    onclick={handleEdit} data-contact-id={contact.Id}></lightning-button> -->
+   
+                            <!-- </template> -->
+                        <!-- </tr>
+                    </template> -->
+                </tbody>
+            </table>
+        </template>
+        <template if:false={paginatedContacts.length}>
+            <p>No contacts exists on this Account.....</p>
+        </template>
+        <template if:true={paginatedContacts}>
+            <div class="slds-m-top_medium">
+                <button disabled={canGoToPreviousPage} onclick={handlePreviousPage}
+                    class="slds-button slds-button_neutral">
+                    Previous
+                </button>
+                <button class="slds-button slds-button_neutral" onclick={handleNextPage} disabled={canGoToNextPage}>
+                    Next
+                </button>
+                <p>Page {pageNumber} of {totalPages}</p>
+            </div>
+        </template>
+    </div>
+</template>
